@@ -15,12 +15,14 @@ jobs:
   integrity:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: nodenv/actions/node-version@v2.0.10
         id: nodenv
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v6
         with:
           node-version: '${{ steps.nodenv.outputs.node-version }}'
           cache: 'yarn'
@@ -32,12 +34,14 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: nodenv/actions/node-version@v2.0.10
         id: nodenv
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v6
         with:
           node-version: '${{ steps.nodenv.outputs.node-version }}'
           cache: 'yarn'
